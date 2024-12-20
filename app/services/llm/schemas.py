@@ -1,5 +1,3 @@
-from typing import List, Dict, Literal
-
 CREATE_NODE_SCHEMA = {
     "name": "create_node",
     "description": "Create a new node in the idea graph",
@@ -46,11 +44,11 @@ CREATE_EDGE_SCHEMA = {
         "properties": {
             "source_node_id": {
                 "type": "string",
-                "description": "ID of the source node",
+                "description": "ID of the source node. Should be different from the target node.",
             },
             "target_node_id": {
                 "type": "string",
-                "description": "ID of the target node",
+                "description": "ID of the target node. Should be different from the source node.",
             },
             "change_description": {
                 "type": "string",

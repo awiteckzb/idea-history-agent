@@ -4,7 +4,6 @@ import aiohttp
 from datetime import datetime
 import ssl
 import certifi
-
 from app.models.base import Source
 from app.services.search.base import BaseSearchClient
 from app.config.settings import settings

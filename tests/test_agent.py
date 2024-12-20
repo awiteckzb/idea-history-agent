@@ -1,8 +1,6 @@
 # tests/test_agent.py
 import asyncio
-import os
 from openai import AsyncOpenAI
-
 from app.core.agent import IdeaHistoryAgent
 from app.services.search.google_search import GoogleSearchClient
 from app.services.search.wiki_client import WikipediaClient
@@ -34,13 +32,16 @@ async def basic_test():
 
 
 async def test_agent():
+    print("Testing agent...")
     # openai_client = OpenAIChatClient()
+    print("Initializing Claude client...")
     claude_client = ClaudeChatClient()
     search_manager = SearchManager(
         google_client=GoogleSearchClient(),
         wiki_client=WikipediaClient(),
     )
 
+    print("Initializing agent...")
     agent = IdeaHistoryAgent(
         chat_client=claude_client,
         search_manager=search_manager,
@@ -99,4 +100,5 @@ async def test_agent():
 
 
 if __name__ == "__main__":
+    print("Script starting...")
     asyncio.run(test_agent())

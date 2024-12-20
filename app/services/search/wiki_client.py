@@ -3,7 +3,6 @@ import wikipedia
 from typing import List
 import asyncio
 from datetime import datetime
-from bs4 import BeautifulSoup
 import warnings
 
 from app.models.base import Source

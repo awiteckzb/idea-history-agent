@@ -2,142 +2,158 @@
   "concept": "democracy",
   "nodes": [
     {
-      "id": "4ff672c0-ac95-436b-97ba-c8bf6df39b13",
-      "time_period": "Modern Era",
+      "id": "04f46f50",
+      "time_period": "Modern Democratic Era",
       "year": 1900,
       "region": "Global",
       "key_contributors": [
-        "Political Theorists"
+        "Political Theorists",
+        "Democratic Scholars"
       ],
-      "main_idea_summary": "Democracy is a political system where members share power, with citizens having the ability to intervene in society and hold their representatives accountable to international legal standards. It fundamentally differs from earlier forms of government by empowering citizens to participate in decision-making processes.",
+      "main_idea_summary": "Modern democracies are defined by citizens' ability to intervene in society and hold their representatives accountable to international legal standards, fundamentally differentiating them from earlier forms of government.",
       "sources": [
         {
           "url": "https://en.wikipedia.org/wiki/History_of_philosophy",
           "title": "History of philosophy",
           "snippet": "The history of philosophy is the systematic study of the development of philosophical thought. It focuses on philosophy as rational inquiry based on argumentation, but some theorists also include myth, religious traditions, and proverbial lore.",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:13:39.044930"
+          "retrieved_at": "2024-12-20 09:16:26.588505"
         },
         {
           "url": "https://en.wikipedia.org/wiki/History_of_democracy",
           "title": "History of democracy",
           "snippet": "A democracy is a political system, or a system of decision-making within an institution, organization, or state, in which members have a share of power. Modern democracies are characterized by two capabilities of their citizens that differentiate them fundamentally from earlier forms of government: to intervene in society and have their sovereign (e.g., their representatives) held accountable to the international laws of other governments of their kind. Democratic government is commonly juxtapos...",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:13:40.175666"
+          "retrieved_at": "2024-12-20 09:16:27.606657"
         }
       ]
     },
     {
-      "id": "40502065-28c8-43c2-8859-1588b93ea277",
-      "time_period": "Early Civilization Period",
-      "year": -3500,
-      "region": "Mesopotamia",
+      "id": "73a8fbd9",
+      "time_period": "Early Modern Period",
+      "year": 1700,
+      "region": "Europe",
       "key_contributors": [
-        "Early Mesopotamian Societies"
+        "European Enlightenment Thinkers"
       ],
-      "main_idea_summary": "First complex societies emerging with social stratification, state development, and symbolic communication systems. These early organizational structures laid groundwork for future political participation and governance models.",
+      "main_idea_summary": "Democracy emerges as a political system deeply rooted in Western cultural values, emphasizing individual rights, social norms, and ethical principles derived from European and Mediterranean historical traditions.",
       "sources": [
         {
           "url": "https://en.wikipedia.org/wiki/Clash_of_Civilizations",
           "title": "Clash of Civilizations",
           "snippet": "The \"Clash of Civilizations\" is a thesis that people's cultural and religious identities will be the primary source of conflict in the post\u2013Cold War world. The American political scientist Samuel P. Huntington argued that future wars would be fought not between countries, but between cultures. It was proposed in a 1992 lecture at the American Enterprise Institute, which was then developed in a 1993 Foreign Affairs article titled \"The Clash of Civilizations?\", in response to his former student Fr...",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:13:57.746884"
+          "retrieved_at": "2024-12-20 09:16:46.171951"
         },
         {
-          "url": "https://en.wikipedia.org/wiki/Cradle_of_civilization",
-          "title": "Cradle of civilization",
-          "snippet": "A cradle of civilization is a location and a culture where civilization was developed independent of other civilizations in other locations. A civilization is any complex society characterized by the development of the state, social stratification, urbanization, and symbolic systems of communication beyond signed or spoken languages (namely, writing systems and graphic arts).",
+          "url": "https://en.wikipedia.org/wiki/Western_culture",
+          "title": "Western culture",
+          "snippet": "Western culture, also known as Western civilization, European civilization, Occidental culture, Western society, or simply the West, refers to the internally diverse culture of the Western world. The term \"Western\" encompasses the social norms, ethical values, traditional customs, belief systems, political systems, artifacts and technologies primarily rooted in European and Mediterranean histories. A broad concept, \"Western culture\" does not relate to a region with fixed members or geographical ...",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:13:58.534102"
+          "retrieved_at": "2024-12-20 09:16:47.057001"
         }
       ]
     },
     {
-      "id": "f18cc97a-ec91-4ce4-a0be-f4c7761b14db",
-      "time_period": "Pre-Columbian Era",
-      "year": -1000,
-      "region": "Americas",
+      "id": "b59e1c01",
+      "time_period": "Ancient Civilizations",
+      "year": -3000,
+      "region": "Mesopotamia and Mediterranean",
       "key_contributors": [
-        "Indigenous Societies of the Americas"
+        "Early Urban Societies",
+        "City-State Administrators"
       ],
-      "main_idea_summary": "Indigenous societies developed complex social structures with potential proto-democratic elements, demonstrating sophisticated organizational systems that included collective decision-making and social stratification",
+      "main_idea_summary": "The emergence of complex social stratification, state formation, and advanced communication systems creates the first structural foundations for collective decision-making and proto-democratic governance principles.",
       "sources": [
         {
           "url": "https://en.wikipedia.org/wiki/Indigenous_peoples_of_the_Americas",
           "title": "Indigenous peoples of the Americas",
-          "snippet": "In the Americas, indigenous peoples comprise the two continents' pre-Columbian inhabitants prior to European colonization of the Americas in the 15th century, as well as the ethnic groups that identify with the pre-Columbian population of the Americas as such. These populations exhibit significant diversity; some Indigenous peoples were historically hunter-gatherers, while others practiced agriculture and aquaculture. Various Indigenous societies developed complex social structures, including pr...",
+          "snippet": "In the Americas, Indigenous peoples comprise the two continents' pre-Columbian inhabitants prior to European colonization of the Americas in the 15th century, as well as the ethnic groups that identify with the pre-Columbian population of the Americas as such. These populations exhibit significant diversity; some Indigenous peoples were historically hunter-gatherers, while others practiced agriculture and aquaculture. Various Indigenous societies developed complex social structures, including pr...",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:14:13.733303"
+          "retrieved_at": "2024-12-20 09:17:05.031878"
         },
         {
-          "url": "https://en.wikipedia.org/wiki/Pre-colonial_history_of_the_Democratic_Republic_of_the_Congo",
-          "title": "Pre-colonial history of the Democratic Republic of the Congo",
-          "snippet": "The pre-colonial history of the modern-day Democratic Republic of the Congo encompasses the history of the Congo Basin region up to the establishment of European colonial rule in the era of New Imperialism and particularly the creation of the Congo Free State and its expansion into the interior after 1885. As the modern territorial boundaries of the Democratic Republic of the Congo did not exist in this period, it is inseparable from the wider pre-colonial histories of Central Africa, the Great ...",
+          "url": "https://en.wikipedia.org/wiki/Ethnic_groups_in_Europe",
+          "title": "Ethnic groups in Europe",
+          "snippet": "Europeans are the focus of European ethnology, the field of anthropology related to the various ethnic groups that reside in the states of Europe. Groups may be defined by common ancestry, common language, common faith, etc.",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:14:14.701610"
+          "retrieved_at": "2024-12-20 09:17:05.938506"
         },
-        {
-          "url": "https://en.wikipedia.org/wiki/Colonial_Brazil",
-          "title": "Colonial Brazil",
-          "snippet": "Colonial Brazil (Portuguese: Brasil Colonial) comprises the period from 1500, with the arrival of the Portuguese, until 1815, when Brazil was elevated to a kingdom in union with Portugal. During the 300 years of Brazilian colonial history, the main economic activities of the territory were based first on brazilwood extraction (brazilwood cycle), which gave the territory its name; sugar production (sugar cycle); and finally on gold and diamond mining (gold cycle). Slaves, especially those brought...",
-          "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:14:15.630736"
-        }
-      ]
-    },
-    {
-      "id": "6e2c1f08-6537-4fb2-83bf-78daebdf7df5",
-      "time_period": "Late 20th/Early 21st Century",
-      "year": 1999,
-      "region": "Middle East (Kurdistan)",
-      "key_contributors": [
-        "Abdullah \u00d6calan"
-      ],
-      "main_idea_summary": "Democratic confederalism proposes a radical democratic model emphasizing direct democracy, autonomy, political ecology, feminism, multiculturalism, and self-governance. It represents a bottom-up approach to democratic organization that prioritizes local community self-organization over centralized state structures.",
-      "sources": [
         {
           "url": "https://en.wikipedia.org/wiki/Civilization",
           "title": "Civilization",
           "snippet": "A civilization (also spelled civilisation in British English) is any complex society characterized by the development of the state, social stratification, urbanization, and symbolic systems of communication beyond signed or spoken languages (namely, writing systems and graphic arts).",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:14:38.961430"
-        },
-        {
-          "url": "https://en.wikipedia.org/wiki/Democratic_confederalism",
-          "title": "Democratic confederalism",
-          "snippet": "Democratic confederalism (Kurdish: Konfederal\u00eezma demokrat\u00eek), also known as Kurdish communalism or Apoism, is a political concept theorized by Kurdistan Workers Party (PKK) leader Abdullah \u00d6calan about a system of democratic self-organization with the features of a confederation based on the principles of autonomy, direct democracy, political ecology, feminism, multiculturalism, self-defense, self-governance and elements of a cooperative economy. Influenced by social ecology, libertarian munici...",
-          "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:14:39.755051"
+          "retrieved_at": "2024-12-20 09:17:06.752539"
         }
       ]
     },
     {
-      "id": "66111524-bb50-4433-9563-58f75ed547f2",
-      "time_period": "Classical Period",
-      "year": -508,
-      "region": "Ancient Greece",
+      "id": "db0406be",
+      "time_period": "Pre-Columbian Era",
+      "year": -1000,
+      "region": "Americas",
       "key_contributors": [
-        "Cleisthenes",
-        "Solon"
+        "Indigenous American Societies"
       ],
-      "main_idea_summary": "First systematic development of democracy where male citizens could directly participate in political decision-making through assemblies, introducing concepts of political equality, public debate, and collective governance.",
+      "main_idea_summary": "Indigenous societies developed complex social structures and governance systems that demonstrated early forms of collective decision-making and social organization, potentially representing alternative paths to democratic principles outside of European traditions.",
       "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Indigenous_peoples_of_the_Americas",
+          "title": "Indigenous peoples of the Americas",
+          "snippet": "In the Americas, Indigenous peoples comprise the two continents' pre-Columbian inhabitants prior to European colonization of the Americas in the 15th century, as well as the ethnic groups that identify with the pre-Columbian population of the Americas as such. These populations exhibit significant diversity; some Indigenous peoples were historically hunter-gatherers, while others practiced agriculture and aquaculture. Various Indigenous societies developed complex social structures, including pr...",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:17:35.161939"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+          "title": "Democratic Party (United States)",
+          "snippet": "The Democratic Party is one of the two major contemporary political parties in the United States. Since the late 1850s, its main political rival has been the Republican Party.",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:17:36.185203"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Taiwanese_indigenous_peoples",
+          "title": "Taiwanese indigenous peoples",
+          "snippet": "Taiwanese indigenous peoples, also known as Formosans, Native Taiwanese or Austronesian Taiwanese, and formerly as Taiwanese aborigines, Takasago people or Gaoshan people, are the indigenous peoples of Taiwan,  with the nationally recognized subgroups numbering about 600,303 or 3% of the island's population. This total is increased to more than 800,000 if the indigenous peoples of the plains in Taiwan are included, pending future official recognition. When including those of mixed ancestry, such...",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:17:37.060433"
+        }
+      ]
+    },
+    {
+      "id": "88ae8710",
+      "time_period": "Punic Civilization (9th-4th century BC)",
+      "year": -800,
+      "region": "North Africa (Carthage)",
+      "key_contributors": [
+        "Punic Administrators",
+        "Carthaginian Political Leaders"
+      ],
+      "main_idea_summary": "Carthaginian city-state governance demonstrated early forms of collective political organization, with sophisticated political institutions that allowed for power-sharing and representative decision-making processes in a complex Mediterranean civilization.",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ancient_Carthage",
+          "title": "Ancient Carthage",
+          "snippet": "Ancient Carthage ( KAR-thij; Punic: \ud802\udd12\ud802\udd13\ud802\udd15\ud802\udd1f\ud802\udd07\ud802\udd03\ud802\udd14\ud802\udd15, lit.\u2009'New City') was an ancient Semitic civilisation based in North Africa. Initially a settlement in present-day Tunisia, it later became a city-state and then an empire. Founded by the Phoenicians in the ninth century BC, Carthage reached its height in the fourth century BC as one of the largest metropoleis in the world. It was the centre of the Carthaginian Empire, a major power led by the Punic people who dominated the ancient western and central...",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:18:57.722551"
+        },
         {
           "url": "https://en.wikipedia.org/wiki/History_of_democracy",
           "title": "History of democracy",
           "snippet": "A democracy is a political system, or a system of decision-making within an institution, organization, or state, in which members have a share of power. Modern democracies are characterized by two capabilities of their citizens that differentiate them fundamentally from earlier forms of government: to intervene in society and have their sovereign (e.g., their representatives) held accountable to the international laws of other governments of their kind. Democratic government is commonly juxtapos...",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:15:01.609949"
+          "retrieved_at": "2024-12-20 09:18:58.189952"
         }
       ]
     }
   ],
   "edges": [
     {
-      "source_node_id": "historical_government_forms",
-      "target_node_id": "modern_democracy",
-      "change_description": "Transition from limited citizen participation to comprehensive democratic systems with enhanced citizen intervention and international accountability mechanisms",
+      "source_node_id": "04f46f50",
+      "target_node_id": "04f46f50",
+      "change_description": "Reinforcement of core democratic principles: Citizens' ability to intervene in society and hold representatives accountable to international legal standards, highlighting the fundamental distinction from earlier governmental forms",
       "weight": 1.0,
       "sources": [
         {
@@ -145,21 +161,21 @@
           "title": "History of philosophy",
           "snippet": "The history of philosophy is the systematic study of the development of philosophical thought. It focuses on philosophy as rational inquiry based on argumentation, but some theorists also include myth, religious traditions, and proverbial lore.",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:13:39.044930"
+          "retrieved_at": "2024-12-20 09:16:26.588505"
         },
         {
           "url": "https://en.wikipedia.org/wiki/History_of_democracy",
           "title": "History of democracy",
           "snippet": "A democracy is a political system, or a system of decision-making within an institution, organization, or state, in which members have a share of power. Modern democracies are characterized by two capabilities of their citizens that differentiate them fundamentally from earlier forms of government: to intervene in society and have their sovereign (e.g., their representatives) held accountable to the international laws of other governments of their kind. Democratic government is commonly juxtapos...",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:13:40.175666"
+          "retrieved_at": "2024-12-20 09:16:27.606657"
         }
       ]
     },
     {
-      "source_node_id": "Early Civilization Period",
-      "target_node_id": "Modern Era",
-      "change_description": "Early societal structures of social stratification and symbolic communication systems laid the foundational groundwork for the development of complex democratic systems and citizen participation",
+      "source_node_id": "73a8fbd9",
+      "target_node_id": "04f46f50",
+      "change_description": "Western cultural foundations directly inform the development of modern democratic principles, tracing the evolution of democratic ideals from European Enlightenment traditions to contemporary global democratic practices",
       "weight": 1.0,
       "sources": [
         {
@@ -167,80 +183,138 @@
           "title": "Clash of Civilizations",
           "snippet": "The \"Clash of Civilizations\" is a thesis that people's cultural and religious identities will be the primary source of conflict in the post\u2013Cold War world. The American political scientist Samuel P. Huntington argued that future wars would be fought not between countries, but between cultures. It was proposed in a 1992 lecture at the American Enterprise Institute, which was then developed in a 1993 Foreign Affairs article titled \"The Clash of Civilizations?\", in response to his former student Fr...",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:13:57.746884"
+          "retrieved_at": "2024-12-20 09:16:46.171951"
         },
         {
-          "url": "https://en.wikipedia.org/wiki/Cradle_of_civilization",
-          "title": "Cradle of civilization",
-          "snippet": "A cradle of civilization is a location and a culture where civilization was developed independent of other civilizations in other locations. A civilization is any complex society characterized by the development of the state, social stratification, urbanization, and symbolic systems of communication beyond signed or spoken languages (namely, writing systems and graphic arts).",
+          "url": "https://en.wikipedia.org/wiki/Western_culture",
+          "title": "Western culture",
+          "snippet": "Western culture, also known as Western civilization, European civilization, Occidental culture, Western society, or simply the West, refers to the internally diverse culture of the Western world. The term \"Western\" encompasses the social norms, ethical values, traditional customs, belief systems, political systems, artifacts and technologies primarily rooted in European and Mediterranean histories. A broad concept, \"Western culture\" does not relate to a region with fixed members or geographical ...",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:13:58.534102"
+          "retrieved_at": "2024-12-20 09:16:47.057001"
         }
       ]
     },
     {
-      "source_node_id": "Early Civilization Period",
-      "target_node_id": "Modern Era",
-      "change_description": "The social stratification and communication systems of early civilizations progressively developed into more complex democratic structures, enabling broader citizen participation and accountability mechanisms",
+      "source_node_id": "b59e1c01",
+      "target_node_id": "73a8fbd9",
+      "change_description": "Transition from early social stratification and communication systems to more sophisticated cultural and political frameworks that emphasize individual rights and collective decision-making",
       "weight": 1.0,
       "sources": [
         {
           "url": "https://en.wikipedia.org/wiki/Indigenous_peoples_of_the_Americas",
           "title": "Indigenous peoples of the Americas",
-          "snippet": "In the Americas, indigenous peoples comprise the two continents' pre-Columbian inhabitants prior to European colonization of the Americas in the 15th century, as well as the ethnic groups that identify with the pre-Columbian population of the Americas as such. These populations exhibit significant diversity; some Indigenous peoples were historically hunter-gatherers, while others practiced agriculture and aquaculture. Various Indigenous societies developed complex social structures, including pr...",
+          "snippet": "In the Americas, Indigenous peoples comprise the two continents' pre-Columbian inhabitants prior to European colonization of the Americas in the 15th century, as well as the ethnic groups that identify with the pre-Columbian population of the Americas as such. These populations exhibit significant diversity; some Indigenous peoples were historically hunter-gatherers, while others practiced agriculture and aquaculture. Various Indigenous societies developed complex social structures, including pr...",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:14:13.733303"
+          "retrieved_at": "2024-12-20 09:17:05.031878"
         },
         {
-          "url": "https://en.wikipedia.org/wiki/Pre-colonial_history_of_the_Democratic_Republic_of_the_Congo",
-          "title": "Pre-colonial history of the Democratic Republic of the Congo",
-          "snippet": "The pre-colonial history of the modern-day Democratic Republic of the Congo encompasses the history of the Congo Basin region up to the establishment of European colonial rule in the era of New Imperialism and particularly the creation of the Congo Free State and its expansion into the interior after 1885. As the modern territorial boundaries of the Democratic Republic of the Congo did not exist in this period, it is inseparable from the wider pre-colonial histories of Central Africa, the Great ...",
+          "url": "https://en.wikipedia.org/wiki/Ethnic_groups_in_Europe",
+          "title": "Ethnic groups in Europe",
+          "snippet": "Europeans are the focus of European ethnology, the field of anthropology related to the various ethnic groups that reside in the states of Europe. Groups may be defined by common ancestry, common language, common faith, etc.",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:14:14.701610"
+          "retrieved_at": "2024-12-20 09:17:05.938506"
         },
-        {
-          "url": "https://en.wikipedia.org/wiki/Colonial_Brazil",
-          "title": "Colonial Brazil",
-          "snippet": "Colonial Brazil (Portuguese: Brasil Colonial) comprises the period from 1500, with the arrival of the Portuguese, until 1815, when Brazil was elevated to a kingdom in union with Portugal. During the 300 years of Brazilian colonial history, the main economic activities of the territory were based first on brazilwood extraction (brazilwood cycle), which gave the territory its name; sugar production (sugar cycle); and finally on gold and diamond mining (gold cycle). Slaves, especially those brought...",
-          "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:14:15.630736"
-        }
-      ]
-    },
-    {
-      "source_node_id": "Early Civilization Period",
-      "target_node_id": "Modern Era",
-      "change_description": "Early societal complex structures with social stratification and communication systems evolved into modern democratic systems with enhanced citizen participation and accountability",
-      "weight": 1.0,
-      "sources": [
         {
           "url": "https://en.wikipedia.org/wiki/Civilization",
           "title": "Civilization",
           "snippet": "A civilization (also spelled civilisation in British English) is any complex society characterized by the development of the state, social stratification, urbanization, and symbolic systems of communication beyond signed or spoken languages (namely, writing systems and graphic arts).",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:14:38.961430"
-        },
-        {
-          "url": "https://en.wikipedia.org/wiki/Democratic_confederalism",
-          "title": "Democratic confederalism",
-          "snippet": "Democratic confederalism (Kurdish: Konfederal\u00eezma demokrat\u00eek), also known as Kurdish communalism or Apoism, is a political concept theorized by Kurdistan Workers Party (PKK) leader Abdullah \u00d6calan about a system of democratic self-organization with the features of a confederation based on the principles of autonomy, direct democracy, political ecology, feminism, multiculturalism, self-defense, self-governance and elements of a cooperative economy. Influenced by social ecology, libertarian munici...",
-          "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:14:39.755051"
+          "retrieved_at": "2024-12-20 09:17:06.752539"
         }
       ]
     },
     {
-      "source_node_id": "Early Civilization Period",
-      "target_node_id": "Modern Era",
-      "change_description": "Early societal communication and stratification systems progressively developed into complex democratic structures with enhanced citizen participation mechanisms",
+      "source_node_id": "b59e1c01",
+      "target_node_id": "73a8fbd9",
+      "change_description": "Transition from early social stratification and communication systems to more sophisticated cultural and political frameworks that emphasize individual rights and collective decision-making",
       "weight": 1.0,
       "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Indigenous_peoples_of_the_Americas",
+          "title": "Indigenous peoples of the Americas",
+          "snippet": "In the Americas, Indigenous peoples comprise the two continents' pre-Columbian inhabitants prior to European colonization of the Americas in the 15th century, as well as the ethnic groups that identify with the pre-Columbian population of the Americas as such. These populations exhibit significant diversity; some Indigenous peoples were historically hunter-gatherers, while others practiced agriculture and aquaculture. Various Indigenous societies developed complex social structures, including pr...",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:17:35.161939"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Democratic_Party_(United_States)",
+          "title": "Democratic Party (United States)",
+          "snippet": "The Democratic Party is one of the two major contemporary political parties in the United States. Since the late 1850s, its main political rival has been the Republican Party.",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:17:36.185203"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Taiwanese_indigenous_peoples",
+          "title": "Taiwanese indigenous peoples",
+          "snippet": "Taiwanese indigenous peoples, also known as Formosans, Native Taiwanese or Austronesian Taiwanese, and formerly as Taiwanese aborigines, Takasago people or Gaoshan people, are the indigenous peoples of Taiwan,  with the nationally recognized subgroups numbering about 600,303 or 3% of the island's population. This total is increased to more than 800,000 if the indigenous peoples of the plains in Taiwan are included, pending future official recognition. When including those of mixed ancestry, such...",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:17:37.060433"
+        }
+      ]
+    },
+    {
+      "source_node_id": "b59e1c01",
+      "target_node_id": "73a8fbd9",
+      "change_description": "Transition from early social stratification and communication systems to more sophisticated cultural and political frameworks that emphasize individual rights and collective decision-making",
+      "weight": 1.0,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Environmental,_social,_and_governance",
+          "title": "Environmental, social, and governance",
+          "snippet": "Environmental, social, and governance (ESG) is shorthand for an investing principle that prioritizes environmental issues, social issues, and corporate governance. Investing with ESG considerations is sometimes referred to as responsible investing or, in more proactive cases, impact investing.",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:18:05.857663"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/United_States",
+          "title": "United States",
+          "snippet": "The United States of America (USA), commonly known as the United States (U.S.) or America, is a country primarily located in North America. It is a federal union of 50 states and a federal capital district, Washington, D.C. The 48 contiguous states border Canada to the north and Mexico to the south, with the states of Alaska to the northwest and the archipelagic Hawaii in the Pacific Ocean. The United States also asserts sovereignty over five major island territories and various uninhabited isla...",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:18:06.989642"
+        }
+      ]
+    },
+    {
+      "source_node_id": "db0406be",
+      "target_node_id": "b59e1c01",
+      "change_description": "Indigenous societies developed complex social structures and governance systems that laid groundwork for early collective decision-making, bridging Pre-Columbian democratic principles with early urban societal governance models",
+      "weight": 1.0,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Indigenous_peoples_of_the_Americas",
+          "title": "Indigenous peoples of the Americas",
+          "snippet": "In the Americas, Indigenous peoples comprise the two continents' pre-Columbian inhabitants prior to European colonization of the Americas in the 15th century, as well as the ethnic groups that identify with the pre-Columbian population of the Americas as such. These populations exhibit significant diversity; some Indigenous peoples were historically hunter-gatherers, while others practiced agriculture and aquaculture. Various Indigenous societies developed complex social structures, including pr...",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:18:31.541903"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Taiwanese_indigenous_peoples",
+          "title": "Taiwanese indigenous peoples",
+          "snippet": "Taiwanese indigenous peoples, also known as Formosans, Native Taiwanese or Austronesian Taiwanese, and formerly as Taiwanese aborigines, Takasago people or Gaoshan people, are the indigenous peoples of Taiwan,  with the nationally recognized subgroups numbering about 600,303 or 3% of the island's population. This total is increased to more than 800,000 if the indigenous peoples of the plains in Taiwan are included, pending future official recognition. When including those of mixed ancestry, such...",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:18:32.027941"
+        }
+      ]
+    },
+    {
+      "source_node_id": "b59e1c01",
+      "target_node_id": "88ae8710",
+      "change_description": "Transition from early social stratification to more complex political institutions, demonstrating progressive development of collective decision-making frameworks",
+      "weight": 1.0,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ancient_Carthage",
+          "title": "Ancient Carthage",
+          "snippet": "Ancient Carthage ( KAR-thij; Punic: \ud802\udd12\ud802\udd13\ud802\udd15\ud802\udd1f\ud802\udd07\ud802\udd03\ud802\udd14\ud802\udd15, lit.\u2009'New City') was an ancient Semitic civilisation based in North Africa. Initially a settlement in present-day Tunisia, it later became a city-state and then an empire. Founded by the Phoenicians in the ninth century BC, Carthage reached its height in the fourth century BC as one of the largest metropoleis in the world. It was the centre of the Carthaginian Empire, a major power led by the Punic people who dominated the ancient western and central...",
+          "source_type": "wikipedia",
+          "retrieved_at": "2024-12-20 09:18:57.722551"
+        },
         {
           "url": "https://en.wikipedia.org/wiki/History_of_democracy",
           "title": "History of democracy",
           "snippet": "A democracy is a political system, or a system of decision-making within an institution, organization, or state, in which members have a share of power. Modern democracies are characterized by two capabilities of their citizens that differentiate them fundamentally from earlier forms of government: to intervene in society and have their sovereign (e.g., their representatives) held accountable to the international laws of other governments of their kind. Democratic government is commonly juxtapos...",
           "source_type": "wikipedia",
-          "retrieved_at": "2024-12-14 13:15:01.609949"
+          "retrieved_at": "2024-12-20 09:18:58.189952"
         }
       ]
     }

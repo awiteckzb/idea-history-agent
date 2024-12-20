@@ -1,10 +1,8 @@
 from typing import List
 import asyncio
-
 from app.services.search.google_search import GoogleSearchClient
 from app.services.search.wiki_client import WikipediaClient
 from app.services.search.base import Source
-
 
 class SearchManager:
 

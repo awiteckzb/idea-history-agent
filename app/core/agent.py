@@ -1,13 +1,8 @@
 # app/core/agent.py
-from typing import List, Dict, Optional, Any
-from openai import AsyncOpenAI
-import networkx as nx
-from typing import List
+from typing import List, Dict, Optional, Any, Callable
 import json
 from datetime import datetime
 import uuid
-from pprint import pprint
-from app.config.settings import settings
 from app.services.search.search_manager import SearchManager
 from app.models.base import Source, Node, Edge, IdeaGraph
 from app.services.llm.schemas import (
@@ -30,6 +25,7 @@ class IdeaHistoryAgent:
         search_manager: SearchManager,
         min_nodes: int = 3,
         max_nodes: int = 5,
+        on_update: Optional[Callable[[Dict[str, Any]], None]] = None
     ):
         self.chat_client = chat_client
         self.search_manager = search_manager
@@ -38,64 +34,69 @@ class IdeaHistoryAgent:
         self.collected_sources: List[Source] = []
         self.graph = IdeaGraph(concept="", nodes=[], edges=[])
         self.current_query = ""
+        self.on_update = on_update
 
     async def research_concept(self, concept: str) -> IdeaGraph:
         """Main entry point for researching a concept's history"""
         try:
             self.graph.concept = concept
+            self._emit_update("start", {"concept": concept})
+
             self.current_query = (
                 f"history of {concept} philosophy evolution development"
             )
+            self._emit_update("query", {"query": self.current_query})
 
-            # Initial search
-            # TODO: Use LLMs to generate a better query, hardcored for now
-            print("Performing initial search...")
-
-            try:
-                initial_sources = await self._perform_search(self.current_query)
-                if not initial_sources:
-                    raise ValueError("No initial sources found")
-                self.collected_sources.extend(initial_sources)
-            except Exception as e:
-                print(f"Error during initial search: {str(e)}")
-                raise
+            initial_sources = await self._perform_search(self.current_query)
+            if not initial_sources:
+                raise ValueError("No initial sources found")
+            self.collected_sources.extend(initial_sources)
+            
+            self._emit_update("sources_found", {
+                "count": len(initial_sources),
+                "query": self.current_query
+            })
 
             # Initialize the graph with first sources
-            print("Processing initial sources...")
-            try:
-                await self._process_sources(initial_sources)
-            except Exception as e:
-                print(f"Error processing initial sources: {str(e)}")
-                raise
+            await self._process_sources(initial_sources)
+            self._emit_update("graph_updated", {
+                "nodes": len(self.graph.nodes),
+                "edges": len(self.graph.edges)
+            })
 
-            try:
-                while not await self._has_sufficient_information():
-                    print("Generating next query...")
-                    query = await self._generate_next_query()
-                    if not query:
-                        raise ValueError("Failed to generate next query")
+            while not await self._has_sufficient_information():
+                query = await self._generate_next_query()
+                if not query:
+                    raise ValueError("Failed to generate next query")
 
-                    self.current_query = query
+                self.current_query = query
+                self._emit_update("query", {"query": query})
 
-                    print(f"Searching for: {query}")
-                    sources = await self._perform_search(query)
-                    if sources:
-                        self.collected_sources.extend(sources)
-                        await self._process_sources(sources)
-                    else:
-                        print("No additional sources found")
-                        break
-            except Exception as e:
-                print(f"Error during iterative search: {str(e)}")
-                # Continue with graph finalization even if iterative search fails
+                print(f"Searching for: {query}")
+                sources = await self._perform_search(query)
+                if sources:
+                    self.collected_sources.extend(sources)
+                    self._emit_update("sources_found", {
+                        "count": len(sources),
+                        "query": query
+                    })
+
+                    await self._process_sources(sources)
+                    self._emit_update("graph_updated", {
+                        "nodes": len(self.graph.nodes),
+                        "edges": len(self.graph.edges)
+                    })
+                else:
+                    print("No additional sources found")
+                    break
 
             # Finalize the graph
-            try:
-                await self._merge_similar_nodes()
-                await self._validate_graph()
-            except Exception as e:
-                print(f"Error during graph finalization: {str(e)}")
-                raise
+            await self._merge_similar_nodes()
+            await self._validate_graph()
+            self._emit_update("complete", {
+                "nodes": len(self.graph.nodes),
+                "edges": len(self.graph.edges)
+            })
 
             if not self.graph.nodes:
                 raise ValueError("Failed to construct graph - no nodes created")
@@ -103,9 +104,21 @@ class IdeaHistoryAgent:
             return self.graph
 
         except Exception as e:
+            self._emit_update("error", {"error": str(e)})
             print(f"Critical error in research_concept: {str(e)}")
             # Return empty graph rather than raising to avoid complete failure
             return IdeaGraph(concept=concept, nodes=[], edges=[])
+
+    
+    def _emit_update(self, event_type: str, data: Dict[str, Any]):
+        if self.on_update:
+            # Convert to dict first to ensure all fields are serializable
+            graph_data = self.graph.model_dump()
+            self.on_update({
+                "type": event_type,
+                "data": data,
+                "graph": graph_data
+            })
 
     async def _perform_search(self, query: str) -> List[Source]:
         return await self.search_manager.search(query)
@@ -408,12 +421,16 @@ class IdeaHistoryAgent:
     ) -> Node:
         """Create a new node from merged nodes"""
 
-        # Combine time periods
-        # If they're different, take the earlier one and add a note
+        # Just take the time period of the first node
+        # TODO: use small LLM to merge time periods
         time_periods = set(node.time_period for node in nodes)
-        merged_time_period = (
-            min(time_periods) if len(time_periods) > 1 else nodes[0].time_period
-        )
+        merged_time_period = nodes[0].time_period
+
+        # Get years and combine
+        years = [node.year for node in nodes if hasattr(node, 'year')]
+        merged_year = min(years) if years else 0  # Default to 0 if no years available
+
+
 
         # Combine regions
         regions = set(node.region for node in nodes)
@@ -431,8 +448,9 @@ class IdeaHistoryAgent:
 
         # Create new node
         return Node(
-            id=str(uuid.uuid4()),
+            id=str(uuid.uuid4())[:8],
             time_period=merged_time_period,
+            year=merged_year,
             region=merged_region,
             key_contributors=list(key_contributors),
             main_idea_summary=merged_summary,
@@ -442,6 +460,7 @@ class IdeaHistoryAgent:
                 "merge_reasoning": reasoning,
                 "original_time_periods": list(time_periods),
                 "original_regions": list(regions),
+                "original_years": list(years),
             },
         )
 

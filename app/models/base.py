@@ -16,7 +16,7 @@ class Source(BaseModel):
 class Node(BaseModel):
     """Represents a snapshot of an idea at a particular time and place"""
 
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    id: str = Field(default_factory=lambda: str(uuid.uuid4())[:8])
     time_period: str
     year: int
     region: str
