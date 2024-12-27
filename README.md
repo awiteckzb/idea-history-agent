@@ -13,7 +13,8 @@ The technical goal here was to implement an AI agent from scratch, but my broade
 
 
 ## Demo
-![](./static/demo.mov)
+![](https://github.com/user-attachments/assets/37da2de9-55ef-443e-961e-f753a5f8ff58)
+
 
 ## Setting up
 `git clone git@github.com:awiteckzb/idea-history-agent.git`
