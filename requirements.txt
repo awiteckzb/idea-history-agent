@@ -1,8 +1,9 @@
 aiohttp==3.11.11
 anthropic==0.42.0
-beautifulsoup4==4.7.1
 certifi==2024.12.14
+fastapi==0.115.6
 openai==1.58.1
 pydantic==2.10.4
 python-dotenv==1.0.1
+uvicorn==0.34.0
 wikipedia==1.4.0

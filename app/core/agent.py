@@ -25,7 +25,7 @@ class IdeaHistoryAgent:
         search_manager: SearchManager,
         min_nodes: int = 3,
         max_nodes: int = 5,
-        on_update: Optional[Callable[[Dict[str, Any]], None]] = None
+        on_update: Optional[Callable[[Dict[str, Any]], None]] = None,
     ):
         self.chat_client = chat_client
         self.search_manager = search_manager
@@ -52,18 +52,18 @@ class IdeaHistoryAgent:
             if not initial_sources:
                 raise ValueError("No initial sources found")
             self.collected_sources.extend(initial_sources)
-            
-            self._emit_update("sources_found", {
-                "count": len(initial_sources),
-                "query": self.current_query
-            })
+
+            self._emit_update(
+                "sources_found",
+                {"count": len(initial_sources), "query": self.current_query},
+            )
 
             # Initialize the graph with first sources
             await self._process_sources(initial_sources)
-            self._emit_update("graph_updated", {
-                "nodes": len(self.graph.nodes),
-                "edges": len(self.graph.edges)
-            })
+            self._emit_update(
+                "graph_updated",
+                {"nodes": len(self.graph.nodes), "edges": len(self.graph.edges)},
+            )
 
             while not await self._has_sufficient_information():
                 query = await self._generate_next_query()
@@ -77,16 +77,18 @@ class IdeaHistoryAgent:
                 sources = await self._perform_search(query)
                 if sources:
                     self.collected_sources.extend(sources)
-                    self._emit_update("sources_found", {
-                        "count": len(sources),
-                        "query": query
-                    })
+                    self._emit_update(
+                        "sources_found", {"count": len(sources), "query": query}
+                    )
 
                     await self._process_sources(sources)
-                    self._emit_update("graph_updated", {
-                        "nodes": len(self.graph.nodes),
-                        "edges": len(self.graph.edges)
-                    })
+                    self._emit_update(
+                        "graph_updated",
+                        {
+                            "nodes": len(self.graph.nodes),
+                            "edges": len(self.graph.edges),
+                        },
+                    )
                 else:
                     print("No additional sources found")
                     break
@@ -100,10 +102,10 @@ class IdeaHistoryAgent:
             print("Graph validated")
 
             print("Attempting to emit complete event...")
-            self._emit_update("complete", {
-                "nodes": len(self.graph.nodes),
-                "edges": len(self.graph.edges)
-            })
+            self._emit_update(
+                "complete",
+                {"nodes": len(self.graph.nodes), "edges": len(self.graph.edges)},
+            )
             print("Complete event emitted")
 
             if not self.graph.nodes:
@@ -117,16 +119,11 @@ class IdeaHistoryAgent:
             # Return empty graph rather than raising to avoid complete failure
             return IdeaGraph(concept=concept, nodes=[], edges=[])
 
-    
     def _emit_update(self, event_type: str, data: Dict[str, Any]):
         if self.on_update:
             # Convert to dict first to ensure all fields are serializable
             graph_data = self.graph.model_dump()
-            self.on_update({
-                "type": event_type,
-                "data": data,
-                "graph": graph_data
-            })
+            self.on_update({"type": event_type, "data": data, "graph": graph_data})
 
     async def _perform_search(self, query: str) -> List[Source]:
         return await self.search_manager.search(query)
@@ -195,13 +192,16 @@ class IdeaHistoryAgent:
                             edge_data = json.loads(
                                 choice.message.function_call.arguments
                             )
-                            if edge_data['source_node_id'] != edge_data['target_node_id']:
+                            if (
+                                edge_data["source_node_id"]
+                                != edge_data["target_node_id"]
+                            ):
 
-                                '''
+                                """
                                 for edge in edges:
                                     source_node = self._get_node_by_id(edge.source_node_id)
                                     target_node = self._get_node_by_id(edge.target_node_id)
-                                    
+
                                     if source_node and target_node:
                                         if source_node.year <= target_node.year:
                                             correct_edges.append(edge)
@@ -209,16 +209,20 @@ class IdeaHistoryAgent:
                                             # Swap source and target if chronologically backwards
                                             swapped_edge = Edge(
                                                 source_node_id=edge.target_node_id,
-                                                target_node_id=edge.source_node_id, 
+                                                target_node_id=edge.source_node_id,
                                                 change_description=edge.change_description,
                                                 weight=edge.weight,
                                                 sources=edge.sources
                                             )
                                             correct_edges.append(swapped_edge)
-                                '''
+                                """
                                 # Check if edge is chronologically correct
-                                source_node = self._get_node_by_id(edge_data['source_node_id'])
-                                target_node = self._get_node_by_id(edge_data['target_node_id'])
+                                source_node = self._get_node_by_id(
+                                    edge_data["source_node_id"]
+                                )
+                                target_node = self._get_node_by_id(
+                                    edge_data["target_node_id"]
+                                )
                                 if source_node and target_node:
                                     if source_node.year <= target_node.year:
                                         edge = Edge(**edge_data, sources=sources)
@@ -226,11 +230,13 @@ class IdeaHistoryAgent:
                                     else:
                                         # Swap source and target if chronologically backwards
                                         swapped_edge = Edge(
-                                            source_node_id=edge_data['target_node_id'],
-                                            target_node_id=edge_data['source_node_id'], 
-                                            change_description=edge_data['change_description'],
-                                            weight=edge_data['weight'],
-                                            sources=edge_data['sources']
+                                            source_node_id=edge_data["target_node_id"],
+                                            target_node_id=edge_data["source_node_id"],
+                                            change_description=edge_data[
+                                                "change_description"
+                                            ],
+                                            weight=edge_data["weight"],
+                                            sources=edge_data["sources"],
                                         )
                                         self.graph.edges.append(swapped_edge)
                     except json.JSONDecodeError as e:
@@ -456,10 +462,8 @@ class IdeaHistoryAgent:
         merged_time_period = nodes[0].time_period
 
         # Get years and combine
-        years = [node.year for node in nodes if hasattr(node, 'year')]
+        years = [node.year for node in nodes if hasattr(node, "year")]
         merged_year = min(years) if years else 0  # Default to 0 if no years available
-
-
 
         # Combine regions
         regions = set(node.region for node in nodes)
@@ -552,13 +556,13 @@ class IdeaHistoryAgent:
         try:
             seen = set()
             unique_edges = []
-            
+
             for edge in edges:
                 key = (edge.source_node_id, edge.target_node_id)
                 if key not in seen:
                     seen.add(key)
                     unique_edges.append(edge)
-                    
+
             return unique_edges
         except Exception as e:
             print(f"Error removing duplicate edges: {str(e)}")
@@ -568,11 +572,11 @@ class IdeaHistoryAgent:
         """Ensure edges only connect from earlier to later nodes chronologically."""
         try:
             correct_edges = []
-            
+
             for edge in edges:
                 source_node = self._get_node_by_id(edge.source_node_id)
                 target_node = self._get_node_by_id(edge.target_node_id)
-                
+
                 if source_node and target_node:
                     if source_node.year <= target_node.year:
                         correct_edges.append(edge)
@@ -580,18 +584,18 @@ class IdeaHistoryAgent:
                         # Swap source and target if chronologically backwards
                         swapped_edge = Edge(
                             source_node_id=edge.target_node_id,
-                            target_node_id=edge.source_node_id, 
+                            target_node_id=edge.source_node_id,
                             change_description=edge.change_description,
                             weight=edge.weight,
-                            sources=edge.sources
+                            sources=edge.sources,
                         )
                         correct_edges.append(swapped_edge)
-                    
+
             return correct_edges
         except Exception as e:
             print(f"Error enforcing temporal order: {str(e)}")
             raise
-            
+
     def _get_node_by_id(self, node_id):
         """Helper method to find a node by its ID."""
         try:
@@ -618,7 +622,11 @@ class IdeaHistoryAgent:
         # Format edges if they exist
         edges_info = []
         for edge in self.graph.edges:
-            edge_str = f"Evolution: {edge.change_description}"
+            edge_str = (
+                f"From: {edge.source_node_id}\n"
+                f"To: {edge.target_node_id}\n"
+                f"Evolution: {edge.change_description}\n"
+            )
             edges_info.append(edge_str)
 
         # Combine into final format
