@@ -13,7 +13,9 @@ The technical goal here was to implement an AI agent from scratch, but my broade
 
 
 ## Demo
-![](https://github.com/user-attachments/assets/37da2de9-55ef-443e-961e-f753a5f8ff58)
+
+https://github.com/user-attachments/assets/95860010-e51c-4042-a9f4-0478c5530268
+
 
 
 ## Setting up
