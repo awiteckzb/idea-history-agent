@@ -15,6 +15,6 @@ class Settings:
 
     MAX_GOOGLE_RESULTS: int = 5
     MAX_WIKI_RESULTS: int = 3
-
+    MAX_SNIPPET_LENGTH: int = 200
 
 settings = Settings()

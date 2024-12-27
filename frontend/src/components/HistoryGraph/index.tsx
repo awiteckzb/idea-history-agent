@@ -1,5 +1,5 @@
 // src/components/HistoryGraph/index.tsx
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import dagre from 'dagre';
 import ReactFlow, {
   MiniMap,
@@ -9,8 +9,8 @@ import ReactFlow, {
   useEdgesState,
   Node,
   Edge,
-  ConnectionMode,
   MarkerType,
+  ReactFlowInstance,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import CustomNode from './CustomNode';
@@ -71,10 +71,11 @@ const getLayoutedElements = (nodes: Node[], edges: Edge[]) => {
 export default function HistoryGraph({ graphData }: HistoryGraphProps) {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
 
   // Update nodes and edges when graphData changes
   useEffect(() => {
-    console.log('GraphData updated:', graphData); // Debug log
+    console.log('GraphData updated:', graphData);
 
     const newNodes = graphData.nodes.map((node) => ({
       id: node.id,
@@ -108,7 +109,21 @@ export default function HistoryGraph({ graphData }: HistoryGraphProps) {
 
     setNodes(layoutedNodes);
     setEdges(layoutedEdges);
-  }, [graphData]); // Depend on entire graphData object
+
+    // Fit view after nodes are updated
+    setTimeout(() => {
+      if (reactFlowInstance) {
+        reactFlowInstance.fitView({
+          padding: 0.2,
+          duration: 500
+        });
+      }
+    }, 50);
+  }, [graphData, reactFlowInstance]);
+
+  const onInit = useCallback((instance: ReactFlowInstance) => {
+    setReactFlowInstance(instance);
+  }, []);
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
@@ -130,12 +145,7 @@ export default function HistoryGraph({ graphData }: HistoryGraphProps) {
           y: 0,
           zoom: 1
         }}
-        onInit={(reactFlowInstance) => {
-          reactFlowInstance.fitView({
-            padding: 0.2,
-            duration: 800
-          });
-        }}
+        onInit={onInit}
       >
         <Background />
         <Controls />

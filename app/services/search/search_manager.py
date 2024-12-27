@@ -22,12 +22,13 @@ class SearchManager:
             wiki_results: Number of Wikipedia results to retrieve
         """
         # Run searches in parallel
-        # google_task = self.google_client.search(query, google_results)
-        # results = await asyncio.gather(google_task, wiki_task)
-
-        # Just Wikipedia for now
+        google_task = self.google_client.search(query, google_results)
         wiki_task = self.wiki_client.search(query, wiki_results)
-        results = await asyncio.gather(wiki_task)
+        results = await asyncio.gather(google_task, wiki_task)
+
+        # # Just Wikipedia for now
+        
+        # results = await asyncio.gather(wiki_task)
 
         all_sources = []
         seen_urls = set()

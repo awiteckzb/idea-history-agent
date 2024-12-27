@@ -44,11 +44,11 @@ CREATE_EDGE_SCHEMA = {
         "properties": {
             "source_node_id": {
                 "type": "string",
-                "description": "ID of the source node. Should be different from the target node.",
+                "description": "ID of the source node. Should be different from the target node. The source node's year should be less than the target node's year.",
             },
             "target_node_id": {
                 "type": "string",
-                "description": "ID of the target node. Should be different from the source node.",
+                "description": "ID of the target node. Should be different from the source node. The target node's year should be greater than the source node's year.",
             },
             "change_description": {
                 "type": "string",

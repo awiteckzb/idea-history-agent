@@ -42,9 +42,10 @@ class IdeaHistoryAgent:
             self.graph.concept = concept
             self._emit_update("start", {"concept": concept})
 
-            self.current_query = (
-                f"history of {concept} philosophy evolution development"
-            )
+            # self.current_query = (
+            #     f"history of {concept} philosophy evolution development"
+            # )
+            self.current_query = concept
             self._emit_update("query", {"query": self.current_query})
 
             initial_sources = await self._perform_search(self.current_query)
@@ -91,12 +92,19 @@ class IdeaHistoryAgent:
                     break
 
             # Finalize the graph
+            print("Starting graph finalization...")
+            print("Merging similar nodes")
             await self._merge_similar_nodes()
+            print("Merged similar nodes")
             await self._validate_graph()
+            print("Graph validated")
+
+            print("Attempting to emit complete event...")
             self._emit_update("complete", {
                 "nodes": len(self.graph.nodes),
                 "edges": len(self.graph.edges)
             })
+            print("Complete event emitted")
 
             if not self.graph.nodes:
                 raise ValueError("Failed to construct graph - no nodes created")
@@ -187,37 +195,50 @@ class IdeaHistoryAgent:
                             edge_data = json.loads(
                                 choice.message.function_call.arguments
                             )
-                            edge = Edge(**edge_data, sources=sources)
-                            self.graph.edges.append(edge)
+                            if edge_data['source_node_id'] != edge_data['target_node_id']:
+
+                                '''
+                                for edge in edges:
+                                    source_node = self._get_node_by_id(edge.source_node_id)
+                                    target_node = self._get_node_by_id(edge.target_node_id)
+                                    
+                                    if source_node and target_node:
+                                        if source_node.year <= target_node.year:
+                                            correct_edges.append(edge)
+                                        else:
+                                            # Swap source and target if chronologically backwards
+                                            swapped_edge = Edge(
+                                                source_node_id=edge.target_node_id,
+                                                target_node_id=edge.source_node_id, 
+                                                change_description=edge.change_description,
+                                                weight=edge.weight,
+                                                sources=edge.sources
+                                            )
+                                            correct_edges.append(swapped_edge)
+                                '''
+                                # Check if edge is chronologically correct
+                                source_node = self._get_node_by_id(edge_data['source_node_id'])
+                                target_node = self._get_node_by_id(edge_data['target_node_id'])
+                                if source_node and target_node:
+                                    if source_node.year <= target_node.year:
+                                        edge = Edge(**edge_data, sources=sources)
+                                        self.graph.edges.append(edge)
+                                    else:
+                                        # Swap source and target if chronologically backwards
+                                        swapped_edge = Edge(
+                                            source_node_id=edge_data['target_node_id'],
+                                            target_node_id=edge_data['source_node_id'], 
+                                            change_description=edge_data['change_description'],
+                                            weight=edge_data['weight'],
+                                            sources=edge_data['sources']
+                                        )
+                                        self.graph.edges.append(swapped_edge)
                     except json.JSONDecodeError as e:
                         print(f"Error parsing function arguments: {str(e)}")
                         continue
                     except ValueError as e:
                         print(f"Error creating edge: {str(e)}")
                         continue
-
-            # # Process the extracted information and update graph
-            # for choice in response.choices:  # Access as dictionary
-            #     if choice.message.function_call:
-            #         try:
-            #             if choice.message.function_call.name == "create_node":
-            #                 node_data = json.loads(
-            #                     choice.message.function_call.arguments
-            #                 )
-            #                 node = Node(**node_data, sources=sources)
-            #                 self.graph.nodes.append(node)
-            #             elif choice.message.function_call.name == "create_edge":
-            #                 edge_data = json.loads(
-            #                     choice.message.function_call.arguments
-            #                 )
-            #                 edge = Edge(**edge_data, sources=sources)
-            #                 self.graph.edges.append(edge)
-            #         except json.JSONDecodeError as e:
-            #             print(f"Error parsing function arguments: {str(e)}")
-            #             continue
-            #         except ValueError as e:
-            #             print(f"Error creating node/edge: {str(e)}")
-            #             continue
 
         except Exception as e:
             print(f"Error processing sources: {str(e)}")
@@ -243,7 +264,7 @@ class IdeaHistoryAgent:
             response = await self._call_llm(
                 messages=[{"role": "user", "content": prompt}],
                 functions=[JUDGE_INFORMATION_SCHEMA],
-                function_call={"name": "judge_information_sufficiency"},
+                function_call={"name": JUDGE_INFORMATION_SCHEMA["name"]},
             )
 
             try:
@@ -316,6 +337,7 @@ class IdeaHistoryAgent:
 
             try:
                 # Get ChatCompletion response
+                print("Calling LLM for node merging")
                 response: ChatCompletion = await self._call_llm(
                     messages=[{"role": "user", "content": prompt}],
                     functions=[MERGE_NODES_SCHEMA],
@@ -326,6 +348,7 @@ class IdeaHistoryAgent:
                 return
 
             try:
+                print("Parsing LLM response for node merging")
                 # Check if we have a valid function call in the first choice
                 if response.choices and response.choices[0].message.function_call:
                     merge_data = json.loads(
@@ -341,6 +364,7 @@ class IdeaHistoryAgent:
             # Execute merge if we have node IDs
             if merge_data.get("node_ids"):
                 try:
+                    print("Executing node merge")
                     await self._execute_node_merge(
                         node_ids=merge_data["node_ids"],
                         reasoning=merge_data.get("reasoning", "No reasoning provided"),
@@ -369,12 +393,14 @@ class IdeaHistoryAgent:
 
             # Find all nodes to be merged
             # TODO: store nodes in a hashmap instead {id: Node}, can index quicker.
+            print("Finding nodes to merge")
             nodes_to_merge = [node for node in self.graph.nodes if node.id in node_ids]
             if not nodes_to_merge:
                 raise ValueError(f"No nodes found matching provided IDs: {node_ids}")
 
             try:
                 # Create merged node
+                print("Creating merged node")
                 merged_node = self._create_merged_node(
                     nodes_to_merge, merged_summary, reasoning
                 )
@@ -383,6 +409,7 @@ class IdeaHistoryAgent:
 
             try:
                 # Update edges
+                print("Updating edges")
                 self._update_edges_for_merged_node(
                     old_node_ids=node_ids, merged_node_id=merged_node.id
                 )
@@ -390,6 +417,7 @@ class IdeaHistoryAgent:
                 raise ValueError(f"Failed to update edges: {str(e)}")
 
             # Remove old nodes and add merged node
+            print("Removing old nodes and adding merged node")
             self.graph.nodes = [
                 node for node in self.graph.nodes if node.id not in node_ids
             ]
@@ -397,6 +425,7 @@ class IdeaHistoryAgent:
 
             # Add merge info to graph metadata
             try:
+                print("Adding merge info to graph metadata")
                 if "merge_history" not in self.graph.metadata:
                     self.graph.metadata["merge_history"] = []
 
@@ -510,7 +539,66 @@ class IdeaHistoryAgent:
         self.graph.edges = new_edges
 
     async def _validate_graph(self):
-        pass
+        """Validate and clean the graph's edges for consistency."""
+        try:
+            self.graph.edges = self._remove_duplicate_edges(self.graph.edges)
+            self.graph.edges = self._enforce_temporal_order(self.graph.edges)
+        except Exception as e:
+            print(f"Error validating graph: {str(e)}")
+            raise
+
+    def _remove_duplicate_edges(self, edges):
+        """Remove any duplicate edges with the same source and target nodes."""
+        try:
+            seen = set()
+            unique_edges = []
+            
+            for edge in edges:
+                key = (edge.source_node_id, edge.target_node_id)
+                if key not in seen:
+                    seen.add(key)
+                    unique_edges.append(edge)
+                    
+            return unique_edges
+        except Exception as e:
+            print(f"Error removing duplicate edges: {str(e)}")
+            raise
+
+    def _enforce_temporal_order(self, edges):
+        """Ensure edges only connect from earlier to later nodes chronologically."""
+        try:
+            correct_edges = []
+            
+            for edge in edges:
+                source_node = self._get_node_by_id(edge.source_node_id)
+                target_node = self._get_node_by_id(edge.target_node_id)
+                
+                if source_node and target_node:
+                    if source_node.year <= target_node.year:
+                        correct_edges.append(edge)
+                    else:
+                        # Swap source and target if chronologically backwards
+                        swapped_edge = Edge(
+                            source_node_id=edge.target_node_id,
+                            target_node_id=edge.source_node_id, 
+                            change_description=edge.change_description,
+                            weight=edge.weight,
+                            sources=edge.sources
+                        )
+                        correct_edges.append(swapped_edge)
+                    
+            return correct_edges
+        except Exception as e:
+            print(f"Error enforcing temporal order: {str(e)}")
+            raise
+            
+    def _get_node_by_id(self, node_id):
+        """Helper method to find a node by its ID."""
+        try:
+            return next((node for node in self.graph.nodes if node.id == node_id), None)
+        except Exception as e:
+            print(f"Error getting node by ID: {str(e)}")
+            raise
 
     def _format_graph_for_llm(self) -> str:
         """Format graph information in a clear, concise way for the LLM"""

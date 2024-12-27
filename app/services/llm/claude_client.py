@@ -94,6 +94,8 @@ class ClaudeChatClient(BaseChatClient):
             if functions:
                 tools = self._convert_functions_to_tools(functions)
                 request_params["tools"] = tools
+                # Fix this later, default to auto
+                request_params["tool_choice"] = {"type": "auto"}
 
             response = await self.client.messages.create(**request_params)
             return self._convert_claude_response_to_openai(response)

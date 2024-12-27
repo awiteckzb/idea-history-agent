@@ -41,6 +41,11 @@ export default function App() {
               const eventData = JSON.parse(line.slice(6));
               console.log('Received event:', eventData);
 
+              // If event data is null, skip
+              // if (eventData === null) {
+              //   break;
+              // }
+
               if (eventData.type === 'error') {
                 setError(eventData.data);
                 break;

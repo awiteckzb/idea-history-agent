@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Add to your global CSS */
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E0 #EDF2F7;
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: #EDF2F7;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background-color: #CBD5E0;
+  border-radius: 4px;
+}

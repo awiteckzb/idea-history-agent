@@ -7,7 +7,7 @@ import warnings
 
 from app.models.base import Source
 from app.services.search.base import BaseSearchClient
-
+from app.config.settings import settings
 
 class WikipediaClient(BaseSearchClient):
     def __init__(self, user_agent: str = "IdeaHistoryAgent/1.0"):
@@ -47,7 +47,9 @@ class WikipediaClient(BaseSearchClient):
                             url=page.url,
                             title=page.title,
                             snippet=(
-                                summary[:500] + "..." if len(summary) > 500 else summary
+                                summary[:settings.MAX_SNIPPET_LENGTH] + "..."
+                                if len(summary) > settings.MAX_SNIPPET_LENGTH
+                                else summary
                             ),
                             source_type="wikipedia",
                             retrieved_at=datetime.now(),
@@ -62,8 +64,8 @@ class WikipediaClient(BaseSearchClient):
                                 url=page.url,
                                 title=page.title,
                                 snippet=(
-                                    page.summary[:500] + "..."
-                                    if len(page.summary) > 500
+                                    page.summary[:settings.MAX_SNIPPET_LENGTH] + "..."
+                                    if len(page.summary) > settings.MAX_SNIPPET_LENGTH
                                     else page.summary
                                 ),
                                 source_type="wikipedia",

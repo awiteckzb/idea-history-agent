@@ -37,6 +37,8 @@ PROCESS_SOURCES_PROMPT = {
 
     Given these new sources, update the graph structure to reflect the new information. You can only add nodes, not remove or modify existing ones.
     If a source is not relevant to the concept, ignore it. If a source is relevant, but does not provide new information (i.e. a node is already present), ignore it.
+    That being said, you should be very liberal with your use of the 'create_node' function.
+
     Sources:
     {sources_text}
 """,
@@ -46,8 +48,10 @@ PROCESS_SOURCES_PROMPT = {
     {graph_summary}
     Given these new sources, update the graph structure to reflect the new information. You can only add edges, not remove or modify existing ones. For example, if there are two nodes, A and B, and a source indicates that A and B are related, you should create an edge between them. If you know that A and B are related but the source does not directly mention it, you can still create an edge between them.
 
-    Make sure that the node ids are correct.
+    Make sure that the node ids are correct. Do not use the same node id for both source and target. This would be adding a self-loop which we do not want.
     
+    You are not required to add new edges! If there is only one node, do not add an edge. Only add edges if there is a meaningful connection between two distinct nodes. If there is an edge between two nodes, do not add a new edge between them!
+
     If a source is not relevant to the concept, ignore it. If a source is relevant, but does not provide new information (i.e. an edge is already present), ignore it. 
     Sources:
     {sources_text}
