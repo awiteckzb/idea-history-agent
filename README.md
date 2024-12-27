@@ -7,7 +7,7 @@ But how did we get here? Ideas and values are dynamic, evolving differently acro
 
 This project is an attempt to shed some light on how we got where we are now, using AI to trace and record the evolution of different concepts through a directed acyclic graph (DAG). 
 
-Using a DAG to model the evolution of abstract ideas is obviously a **massive** simplification of how cultural and intellectual change actually happens. Hopefully this is a fun/useful starting point though.
+Using a DAG to model the evolution of abstract ideas is obviously a massive simplification of how cultural and intellectual change actually happens. Hopefully this is a fun/useful starting point though.
 
 The technical goal here was to implement an AI agent from scratch, but my broader aim is to create a tool that helps us better understand our own worldviews (and hopefully question them :)).
 
